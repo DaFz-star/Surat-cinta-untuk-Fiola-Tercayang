@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surat dari Daffa untuk Fiola</title>
+
+  <!-- Font cute -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg1:#ffe6f4;
+      --bg2:#e6f3ff;
+      --card:#fffafc;
+      --text:#4a385a;
+      --muted:#9b86b6;
+      --accent:#ff8fb7;
+      --accent2:#b79dff;
+      --accent3:#ffd1e3;
+      --border:rgba(255,184,214,.9);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      min-height:100vh;
+      font-family:"Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 0% 0%, rgba(255,143,183,.5), transparent 60%),
+        radial-gradient(900px 600px at 100% 100%, rgba(183,157,255,.45), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:min(920px, 100%);
+    }
+
+    .header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    .brand h1{
+      font-size:clamp(22px, 3.4vw, 34px);
+      letter-spacing:.3px;
+      margin-bottom:4px;
+    }
+    .brand p{
+      font-size:14px;
+      color:var(--muted);
+    }
+    .chip{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.8);
+      box-shadow:0 4px 12px rgba(255,182,193,.4);
+      white-space:nowrap;
+    }
+
+    .card{
+      position:relative;
+      border-radius:24px;
+      border:1.5px solid var(--border);
+      background:var(--card);
+      padding:20px;
+      box-shadow:
+        0 20px 60px rgba(255,143,183,.45),
+        0 0 0 1px rgba(255,255,255,.6) inset;
+      overflow:hidden;
+    }
+
+    .card::before,
+    .card::after{
+      content:"";
+      position:absolute;
+      width:120px;
+      height:120px;
+      background:
+        radial-gradient(circle at 30% 30%, #ff9abf 0 45%, transparent 46%),
+        radial-gradient(circle at 70% 30%, #ff9abf 0 45%, transparent 46%);
+      transform:rotate(-35deg);
+      opacity:.16;
+      pointer-events:none;
+    }
+    .card::before{
+      top:-50px;
+      right:-40px;
+    }
+    .card::after{
+      bottom:-60px;
+      left:-20px;
+      transform:rotate(25deg) scale(.85);
+    }
+
+    .content{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+    }
+    @media (max-width: 820px){
+      .content{grid-template-columns:1fr}
+    }
+
+    .panel{
+      background:rgba(255,255,255,.86);
+      border-radius:20px;
+      border:1px solid rgba(255,214,234,.9);
+      padding:16px 16px 14px;
+      box-shadow:0 10px 26px rgba(255,182,193,.45);
+    }
+
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:10px;
+    }
+    .title h2{
+      font-size:16px;
+    }
+    .hint{
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .letter{
+      margin:0;
+      line-height:1.7;
+      font-size:15px;
+      color:#5b476e;
+      white-space:pre-line;
+      min-height:120px;
+    }
+
+    .actions{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    button{
+      cursor:pointer;
+      border-radius:999px;
+      border:1px solid rgba(255,182,193,.9);
+      padding:8px 14px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--text);
+      background:linear-gradient(135deg, #ffe9f3, #fff);
+      box-shadow:0 4px 12px rgba(255,182,193,.55);
+      transition:.18s ease;
+    }
+    button:hover{
+      transform:translateY(-1px) scale(1.02);
+      box-shadow:0 6px 16px rgba(255,182,193,.8);
+    }
+    .primary{
+      background:linear-gradient(135deg, #ff9ac4, #ffb3d9);
+      color:#4a2140;
+      border-color:#ff9ac4;
+    }
+
+    .mini{
+      display:grid;
+      gap:12px;
+    }
+    .stat{
+      border-radius:18px;
+      padding:12px 13px;
+      background:linear-gradient(135deg, rgba(255,243,248,.96), rgba(240,236,255,.96));
+      border:1px solid rgba(255,199,225,.9);
+      box-shadow:0 8px 22px rgba(183,157,255,.35);
+    }
+    .stat .k{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .stat .v{
+      font-size:14px;
+      line-height:1.6;
+      color:#5b476e;
+    }
+
+    .footer{
+      margin-top:12px;
+      font-size:11px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* efek ketik */
+    .typing::after{
+      content:"";
+      display:inline-block;
+      width:9px;
+      height:1.05em;
+      border-right:2px solid #f18db6;
+      margin-left:4px;
+      transform:translateY(2px);
+      animation:blink .9s infinite;
+    }
+    @keyframes blink{50%{opacity:.15}}
+
+    /* overlay pembuka */
+    .overlay{
+      position:fixed;
+      inset:0;
+      display:grid;
+      place-items:center;
+      background:rgba(255,206,230,.65);
+      backdrop-filter:blur(8px);
+      padding:24px;
+      z-index:50;
+    }
+    .modal{
+      width:min(560px,100%);
+      border-radius:22px;
+      border:1px solid rgba(255,184,214,.9);
+      background:linear-gradient(145deg,#fff7fb,#ffeefd);
+      padding:18px 18px 14px;
+      box-shadow:
+        0 18px 50px rgba(255,143,183,.6),
+        0 0 0 1px rgba(255,255,255,.85) inset;
+    }
+    .modal h3{
+      font-size:17px;
+      margin-bottom:4px;
+    }
+    .modal p{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:12px;
+    }
+    .modal .row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <h1>Surat Kecil dari Daffa untuk Fiola</h1>
+        <p>Versi cute, tapi isinya serius dari hati.</p>
+      </div>
+      <div class="chip" id="today">—</div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="panel">
+          <div class="title">
+            <h2>Untuk: Fiola</h2>
+            <span class="hint">Klik “Tampilkan” lalu “Lanjut” pelan-pelan ya</span>
+          </div>
+
+          <p class="letter typing" id="letter">
+            (Klik tombol “Tampilkan” dulu)
+          </p>
+
+          <div class="actions">
+            <button class="primary" id="btnShow">Tampilkan</button>
+            <button id="btnNext">Lanjut</button>
+            <button id="btnReset">Ulang</button>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="stat">
+            <div class="k">Kalimat favorit Daffa</div>
+            <p class="v">
+              “Di antara ratusan siswa di sekolah, mataku tetap saja cari kamu, Fiola.”
+            </p>
+          </div>
+          <div class="stat">
+            <div class="k">Pengingat buat Fiola</div>
+            <p class="v">
+              Kalau hari ini kamu capek atau lagi nggak baik-baik saja, istirahat ya.
+              Daffa tetap bangga sama kamu, apa pun yang terjadi.
+            </p>
+          </div>
+          <div class="stat">
+            <div class="k">Janji kecil dari Daffa</div>
+            <p class="v">
+              Pelan-pelan, aku bakal terus belajar jadi versi terbaik dari diriku sendiri,
+              supaya suatu hari bisa benar-benar pantas jaga hati kamu.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Surat ini dibuat oleh Daffa, khusus buat Fiola. Jangan lupa klik “Lanjut” sampai habis.
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay pembuka -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h3>Hai, Fiola.</h3>
+      <p>
+        Ada surat kecil yang Daffa tulis khusus buat kamu.  
+        Baca pelan-pelan, ya. Kalau kamu sudah siap, klik tombol di bawah.
+      </p>
+      <div class="row">
+        <button class="primary" id="btnOpen">Buka surat dari Daffa</button>
+        <button id="btnClose">Nanti saja dulu</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // TANGGAL HARI INI
+    const today = new Date();
+    const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+    const months = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+    document.getElementById("today").textContent =
+      `${days[today.getDay()]}, ${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
+
+    // TEKS ROMANTIS KHUSUS DAFFA & FIOLA
+    const lines = [
+      "Hai, Fiola.\nDari sekian banyak orang yang pernah aku temui, entah kenapa hatiku paling betah kalau lagi mikirin kamu.",
+      "Kalau malam terasa sepi dan apa pun rasanya bikin takut, ada satu hal yang selalu nenangin aku: bayangan senyum kamu.",
+      "Di antara banyaknya siswa di sekolah, mataku selalu saja berhenti di kamu.\nSeolah-olah hatiku sudah hafal di mana kamu berdiri.",
+      "Fiola, bolehkah aku pelan-pelan masuk ke hidupmu?\nIzinkan aku mencintaimu dengan cara sederhana, tapi tulus, sebagai Daffa yang lagi berproses jadi lebih baik.",
+      "Aku nggak janji selalu sempurna, tapi aku janji akan terus berusaha bikin kamu merasa dihargai, didengar, dan disayang.",
+      "Aku mencintaimu lebih dari yang bisa dijelasin sama kata-kata.\nBuat aku, kamu itu rumah—tempat paling nyaman buat pulang."
+    ];
+
+    let index = -1;
+    let typingTimer = null;
+
+    const elLetter = document.getElementById("letter");
+    const btnShow = document.getElementById("btnShow");
+    const btnNext = document.getElementById("btnNext");
+    const btnReset = document.getElementById("btnReset");
+
+    function typeText(text, speed = 22){
+      clearInterval(typingTimer);
+      elLetter.classList.add("typing");
+      elLetter.textContent = "";
+      let i = 0;
+      typingTimer = setInterval(() => {
+        elLetter.textContent += text[i] ?? "";
+        i++;
+        if(i > text.length){
+          clearInterval(typingTimer);
+          elLetter.classList.remove("typing");
+        }
+      }, speed);
+    }
+
+    function showNext(){
+      index = Math.min(index + 1, lines.length - 1);
+      typeText(lines[index]);
+    }
+
+    btnShow.addEventListener("click", () => {
+      if(index === -1) showNext();
+      else typeText(lines[index]);
+    });
+
+    // Kalau sudah tamat dan tombol "Lanjut" diklik lagi, langsung ke WhatsApp Daffa
+    btnNext.addEventListener("click", () => {
+      if(index < lines.length - 1){
+        showNext();
+      } else {
+        // Ganti ke nomor WA kamu (sudah pakai +62)
+        window.location.href = "https://wa.me/6281215315308";
+      }
+    });
+
+    btnReset.addEventListener("click", () => {
+      index = -1;
+      clearInterval(typingTimer);
+      elLetter.textContent = "(Klik tombol “Tampilkan” dulu)";
+      elLetter.classList.add("typing");
+      setTimeout(()=>elLetter.classList.remove("typing"), 700);
+    });
+
+    // OVERLAY
+    const overlay = document.getElementById("overlay");
+    document.getElementById("btnOpen").addEventListener("click", () => overlay.style.display = "none");
+    document.getElementById("btnClose").addEventListener("click", () => overlay.style.display = "none");
+  </script>
+</body>
+</html>
